@@ -4,30 +4,26 @@
 using namespace std;
 
 Cliente::Cliente(string _code, string _name, string _surname, string _address)
-
 {
     this->code = _code;
     this->name = _name;
     this->surname = _surname;
     this->address = _address;
-};
+}
+ 
 
-string Cliente::getCode()
-    {
-        return this->code;
-    }
+string Cliente::getCode() {
+    return this->code;
+}
 
-string Cliente::getName()
-    {
-        return this->name;
-    }
+string Cliente::getName() {
+    return this->name;
+}
 
-string Cliente::getSurname()
-    {
-        return this->surname;
-    }
+string Cliente::getSurname() {
+    return this->surname;
+}
 
-string Cliente::getAddress()
-    {
-        return this->address;
-    }
+string Cliente::getAddress() {
+    return this->address;
+}
