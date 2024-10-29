@@ -1,39 +1,62 @@
 #include <iostream>
-#include "Article.hpp"
-#include "Customer.hpp"
-#include "Order.hpp"
+#include "./include/equipo.hpp"   
+#include "./include/cliente.hpp"
+#include "./include/pedido.hpp"
+#include "./include/empleado.hpp"
 
-int main() {
-    // Crear algunos artículos:
-    Article* article1 = new Article("A001", "Facial cream", 15.99);
-    Article* article2 = new Article("A002", "Lipstick", 7.99);
-    Article* article3 = new Article("A003", "Aqua di perfum", 9.99);
+using namespace std;
 
-    // Crear algunos clientes:
-    Customer* customer1 = new Customer("C001", "Customer 1", "123 Main Street");
-    Customer* customer2 = new Customer("C002", "Customer 2", "456 Secondary Street");
-
-    // Crear pedidos para clientes:
-    Order* orderCustomer1 = new Order("O001", customer1);
-    orderCustomer1->attach(article1);
-    orderCustomer1->attach(article2);
+int main()
+{   
+    // Hacemos todo harcodeado sin menu  
     
-    Order* orderCustomer2 = new Order("O002", customer2);
-    orderCustomer2->attach(article2);   
-    orderCustomer2->attach(article3);   
+    // Creamos algunos Equipos  Son objetos de la clase Equipo
+    Equipo* equipo1 = new Equipo("E001", "Matafuegos 1KG", 4999.99); 
+    Equipo* equipo2 = new Equipo("E002", "Guantes Ignifugo", 500.00);
+    Equipo* equipo3 = new Equipo("E003", "Casco", 10000);
     
-    //Mostrar pedidos:
-    orderCustomer1->show(); 
-    orderCustomer2->show(); 
+    
+    // Creamos algunos clientes  Son objetos de la clase Cliente
+    Cliente* cliente1 = new Cliente("C001", "Carlos", "Garcia", "Coronel Díaz y Santa Fe");
+    Cliente* cliente2 = new Cliente("C002", "Ricardo", "Starkey", "Abbey Road 2");
 
-    // Liberar la memoria
-    delete article1;
-    delete article2;
-    delete article3;
-    delete customer1;
-    delete customer2;
-    delete orderCustomer1;
-    delete orderCustomer2;
+    // Creamos algunos empleados  Son objetos de la clase Empleado
+    Empleado* empleado1 = new Empleado("E001", "Roberto", "Esponja", "223 155 456357");
+    Empleado* empleado2 = new Empleado("E002", "Patricio", "Estrella", "223 154 865475");
+    
+    
+    // Creamos algunos pedidos  Son objetos de la clase Order
+    Pedido* pedidoCliente1 = new Pedido("P001", cliente1, empleado1);
+    Pedido* pedidoCliente2 = new Pedido("P002", cliente2, empleado2);
+   
+    // Agregamos artículos a los pedidos  Usamos el metodo addArticle de la clase Order
+    pedidoCliente1->addEquipo(equipo1);
+    pedidoCliente1->addEquipo(equipo2);
+    pedidoCliente2->addEquipo(equipo3);
 
+        
+    // Mostramos la lista de pedidos
+    cout << endl;
+    cout << "************************************************" << endl;
+    cout << "LISTA DE PEDIDOS - Segurola y havana S.A. " << endl;
+    cout << "************************************************" << endl;
+    cout << endl;
+    
+    pedidoCliente1->showPedido();
+    pedidoCliente2->showPedido();
+
+
+    // Liberamos la memoria
+    delete equipo1;
+    delete equipo2;
+    delete equipo3;
+    delete pedidoCliente1;
+    delete pedidoCliente2;
+    delete cliente1;
+    delete cliente2;
+    delete empleado1;
+    delete empleado2;
+    
+   
     return 0;
 }

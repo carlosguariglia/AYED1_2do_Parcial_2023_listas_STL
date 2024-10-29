@@ -8,12 +8,6 @@ Pedido::Pedido(string _code, Cliente* _cliente, Empleado* _empleado)
         this->code = _code;           
         this->cliente = _cliente;
         this->empleado = _empleado;
-        this->numEquipos = 0;         
-
-    
-    for (int i = 0; i < 20; i++) {
-        this->equipo[i] = nullptr;
-    }  
  }
 
 string Pedido::getCode()
@@ -21,29 +15,34 @@ string Pedido::getCode()
     return this->code;
 }
 
-void Pedido::addEquipo(Equipo* _equipo) 
+void Pedido::addEquipo(Equipo* _equipo)
 {
-    if (numEquipos < 20) {    
-        equipo[numEquipos] = _equipo;  
-        numEquipos++;                  
-    } else {
-        cout << "Error: No se pueden agregar más artículos. El pedido está lleno." << endl;
-    }
+    this->listaEquipo.push_front(_equipo); // Agregar equipo al inicio de la lista
 }
 
 void Pedido::showPedido()
 {
     cout << "Pedido Nro: " << getCode() << endl;
-    cout << "Cliente: " << cliente->getName() << " " << cliente->getSurname() << endl;
-    cout << "Empleado: " << empleado->getName() << " " << empleado->getSurname() << endl;
-    cout << "Direccion: " << cliente->getAddress() << endl;
+    if (cliente != nullptr) {
+        cout << "Cliente: " << cliente->getName() << " " << cliente->getSurname() << endl;
+        cout << "Direccion: " << cliente->getAddress() << endl;
+    }
+    if (empleado != nullptr) {
+        cout << "Empleado: " << empleado->getName() << " " << empleado->getSurname() << endl;
+    }
+
     cout << "Equipos: " << endl;
 
-    for(int i = 0; i < numEquipos; i++) 
-    {
-        cout << "  - " << equipo[i]->getName() << " (" << equipo[i]->getCode() << "): $" << equipo[i]->getPrice() << endl;
+    for (Equipo* equipo : listaEquipo) {
+        if (equipo != nullptr) {
+            cout << "  - " << equipo->getName() << " (" << equipo->getCode() << "): $" << equipo->getPrice() << endl;
+        }
     }
 
     cout << "-------------------------------------" << endl;
     cout << endl;
 }
+
+
+
+

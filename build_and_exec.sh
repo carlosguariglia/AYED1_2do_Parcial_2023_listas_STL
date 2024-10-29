@@ -10,10 +10,10 @@
 # g++ -I./include main.cpp ./src/Article.cpp ./src/Customer.cpp ./src/Order.cpp -o parcial.bin  
 
 # incluyendo todos los .cpp que haya en ./src
-g++ -I./include main.cpp ./src/*.cpp -o parcial.bin  
+g++ -I./include main.cpp ./src/*.cpp -o app.bin  
 
 # Permiso de ejecucion a parcial.bin
-chmod +x parcial.bin
+chmod +x app.bin
 
 # Ejecutando parcial.bin
-./parcial.bin
+./app.bin

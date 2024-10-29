@@ -2,6 +2,7 @@
 #define PEDIDO_HPP
 
 #include <string>
+#include <list>
 
 #include "equipo.hpp"
 #include "cliente.hpp"
@@ -15,7 +16,7 @@ class Pedido
         string code;
         Cliente* cliente;         
         Empleado* empleado;
-        Equipo* equipo[20];
+        list<Equipo*> listaEquipo;
         int numEquipos;   
 
     public:
